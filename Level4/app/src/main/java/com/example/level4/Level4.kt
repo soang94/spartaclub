@@ -2,14 +2,14 @@ package com.example.level4
 
 fun main() {
     var continueCalculator = true
-    var calculator: Calculator
+    var calculator: Calculator?
 
     while (continueCalculator) {
-        println("첫번째 값을 입력해 주세요")
+        println("첫번째 숫자를 입력해 주세요")
         var num1 = readln().toDouble()
-        println("연산자를 입력해 주세요")
+        println("연산자 +, - , *, / 중 하나를 입력해 주세요")
         var operator = readln()
-        println("두번째 값을 입력해 주세요")
+        println("두번째 숫자를 입력해 주세요")
         var num2 = readln().toDouble()
 
         calculator = when (operator) {
@@ -18,11 +18,11 @@ fun main() {
             "*" -> Calculator(MultiplyOperation())
             "/" -> Calculator(DivideOperation())
             else -> {
-                println("올바른 연산자를 입력해 주세요")
-                Calculator(AddOperation())
+                println("연산자 +, - , *, / 중 하나를 입력해 주세요")
+                null
             }
         }
-        val result = calculator.operate(num1, num2)
+        val result = calculator!!.operate(num1, num2)
         println("결과: $result")
 
         println("계산기를 더 사용하겠습니까? (Y/N)")
